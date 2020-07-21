@@ -28,7 +28,7 @@ with open('./README.md', 'w+') as readme:
                     html = open(BASE_ADDRESS+platform+'/'+problem+'/problem.md').read()
                     soup = BeautifulSoup(html, features="lxml")
 
-                    link = 'https://github.com/Pranjalya/competitive-programming-hub/'+platform_path.strip('./')+'/'
+                    link = 'https://github.com/Pranjalya/competitive-programming-hub/tree/master/'+platform_path.strip('./')+'/'
                     statement = soup.find(id='problem_statement').text
                     title = soup.find(id='title').text
 
