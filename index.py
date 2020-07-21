@@ -22,7 +22,7 @@ with open('./README.md', 'w+') as readme:
             platform_path = BASE_ADDRESS+platform
 
             if os.path.isdir(platform_path):
-                content += "<details><summary><i>"+name[platform]+"</i></summary><ul style='list-style-type: none;margin-left: 20px;'>"
+                content += "<details><summary><b>"+name[platform]+"</b></summary><ul style='list-style-type: none;margin-left: 20px;'>"
 
                 for problem in os.listdir(BASE_ADDRESS+platform):
                     html = open(BASE_ADDRESS+platform+'/'+problem+'/problem.md').read()
@@ -32,8 +32,8 @@ with open('./README.md', 'w+') as readme:
                     statement = soup.find(id='problem_statement').text
                     title = soup.find(id='title').text
 
-                    content += "<li><details><summary><a href='{}'>{}</a></summary><br/>".format(link, title)
-                    content += statement + "<br/>"
+                    content += "<li><details><summary><a href='{}'>{}</a></summary><br/><i>".format(link, title)
+                    content += statement + "</i><br/>"
                     problem_path = platform_path+'/'+problem+'/'
 
                     for sol in os.listdir(problem_path):
