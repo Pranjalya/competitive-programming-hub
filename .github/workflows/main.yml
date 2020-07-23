@@ -16,6 +16,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Generate README
       run: |
-        pip install -r ./requirements.txt
+        pip3 install -r ./requirements.txt
         echo "Generating README files"
         python3 ./index.py
