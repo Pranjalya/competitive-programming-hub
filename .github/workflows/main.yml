@@ -16,5 +16,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: |
+        pip install -r ./requirements.txt
         echo "Generating README files"
         python ./index.py
