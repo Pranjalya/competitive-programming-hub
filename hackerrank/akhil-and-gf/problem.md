@@ -7,8 +7,7 @@
 ### Problem Statement
 
 <div id="problem_statement">
-After dating for a long time, Akhil is finally going to propose to his girlfriend. She is very strong in mathematics, and will accept his proposal, if and only if Akhil solves a problem given by her. The problem is given below. Help Akhil solve it.
-
+After dating for a long time, Akhil is finally going to propose to his girlfriend. She is very strong in mathematics, and will accept his proposal, if and only if Akhil solves a problem given by her. The problem is given below. Help Akhil solve it.  
 Akhil is given two numbers N and M, and he has to tell her the remainder when 111...(N times) is divided by M. 
 </div>
 
