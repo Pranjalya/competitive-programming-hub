@@ -9,6 +9,7 @@ name = {
     "hackerearth": "Hackerearth",
     "codeforces": "Codeforces",
     "interviewbit": "InterviewBit",
+    "geeksforgeeks": "GeeksForGeeks"
 }
 
 BASE_ADDRESS = "./"
@@ -39,6 +40,7 @@ with open("./README.md", "w+") as readme:
                         + platform_path.strip("./")
                         + "/"
                     )
+                    print(problem)
                     statement = soup.find(id="problem_statement").text
                     title = soup.find(id="title").text
 
