@@ -9,7 +9,7 @@ name = {
     "hackerearth": "Hackerearth",
     "codeforces": "Codeforces",
     "interviewbit": "InterviewBit",
-    "codeforces": "Codeforces"
+    "geeksforgeeks": "GeeksForGeeks"
 }
 
 BASE_ADDRESS = "./"
