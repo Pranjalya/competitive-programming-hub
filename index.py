@@ -59,6 +59,10 @@ with open("./README.md", "w+") as readme:
                             content += "<button href={}>C++</button>".format(
                                 link + problem + "/" + sol
                             )
+                        elif sol.endswith(".go"):
+                            content += "<button href={}>Go</button>".format(
+                                link + problem + "/" + sol
+                            )
                     content += "</details></li>"
                 content += "</ul></summary></details>"
     readme.write(content)
