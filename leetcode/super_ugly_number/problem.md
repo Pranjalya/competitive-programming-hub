@@ -1,8 +1,10 @@
 ## Ugle Numbers 2
 
+<div id="problem_statement">
 Write a program to find the nth super ugly number.
 
 Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k.
+</div>
 
 #### Example:
 

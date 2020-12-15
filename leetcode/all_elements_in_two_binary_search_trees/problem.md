@@ -1,9 +1,10 @@
 ##  All Elements in Two Binary Search Trees
 
+<div id="problem_statement">
 Given two binary search trees root1 and root2.
 
 Return a list containing all the integers from both trees sorted in ascending order.
-
+</div>
 
 #### Example
 
