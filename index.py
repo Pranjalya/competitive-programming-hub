@@ -1,5 +1,5 @@
 import os
-from bs4 import BeautifulSoup
+from typing import List
 
 name = {
     "coding-ninjas": "Coding Ninjas",
@@ -14,55 +14,33 @@ name = {
 
 BASE_ADDRESS = "./"
 
-with open("./README.md", "w+") as readme:
+class GenerateHTML:
+    """Generate HTML file using python"""
 
-    content = "<h1>Competitive Programming Hub</h1><h2>Platforms</h2>"
-    for platform in os.listdir(BASE_ADDRESS):
+    def __init__(self, path: str, title: str, requirements: List[str]):
+        head = self.get_head(title, requirements)
+        js = self.get_js()
+        with open(path, 'w+') as f:
+            f.write("<html>%s</html>" % (head + js))
 
-        if not platform.startswith("."):
-            platform_path = BASE_ADDRESS + platform
+    def get_head(self, title: str, requirements: List[str]) -> str:
+        title = '<title>%s</title>' % title
+        meta = '''
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        '''
+        scripts = ''
+        for req in requirements:
+            scripts += '<script src="%s"></script>' % req
+        return '<head>%s</head>' % (title + meta + scripts)
+    
+    def get_js(self):
+        js = '''
+        var md = new Remarkable();
+        console.log(md.render('#foobar #baz'));
+        '''
+        return '<script>%s</script>' % js
 
-            if os.path.isdir(platform_path):
-                content += (
-                    "<details><summary><b>"
-                    + name[platform]
-                    + "</b></summary><ul style='list-style-type: none;margin-left: 20px;'>"
-                )
-
-                for problem in os.listdir(BASE_ADDRESS + platform):
-                    html = open(
-                        BASE_ADDRESS + platform + "/" + problem + "/problem.md"
-                    ).read()
-                    soup = BeautifulSoup(html, features="lxml")
-
-                    link = (
-                        "https://github.com/Pranjalya/competitive-programming-hub/tree/master/"
-                        + platform_path.strip("./")
-                        + "/"
-                    )
-                    print(problem)
-                    statement = soup.find(id="problem_statement").text
-                    title = soup.find(id="title").text
-
-                    content += "<li><details><summary><a href='{}'>{}</a></summary><br/><i>".format(
-                        link, title
-                    )
-                    content += statement + "</i><br/>"
-                    problem_path = platform_path + "/" + problem + "/"
-
-                    for sol in os.listdir(problem_path):
-                        if sol.endswith(".py"):
-                            content += "<button href={}>Python</button>".format(
-                                link + problem + "/" + sol
-                            )
-                        elif sol.endswith(".cpp"):
-                            content += "<button href={}>C++</button>".format(
-                                link + problem + "/" + sol
-                            )
-                        elif sol.endswith(".go"):
-                            content += "<button href={}>Go</button>".format(
-                                link + problem + "/" + sol
-                            )
-                    content += "</details></li>"
-                content += "</ul></summary></details>"
-    readme.write(content)
+if __name__=='__main__':
+    GenerateHTML(BASE_ADDRESS+'index.html', "Pranjalya's CP Hub", ['https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js'])
